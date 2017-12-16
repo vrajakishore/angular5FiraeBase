@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; 
+import { DataService } from '../data.service';
 
 interface Post {
-  title: string;
+  title: string ;
   content: string;
 
 }

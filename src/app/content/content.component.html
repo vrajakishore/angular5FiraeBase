@@ -1,26 +1,28 @@
 
 <div class="container color-dark">
-    <h1>A specific post:</h1>
+    <h1>Check out new Posts</h1>
 </div>    
-    
-      <h3>{{ (singlePost | async)?.title }}</h3>
-      <p>{{ (singlePost | async)?.content }}</p>
-    
-    
-    
-    
-    
-      <input type="text" class="txt" name="title" placeholder="Title..">
-      <textarea [(ngModel)]="content" class="txt" name="content" placeholder="Content.."></textarea>
-      <input type="submit" class="btn" value="Add a Post" (click)="addPost()"> 
 
+<div class="container color-light">
+    
+  
+<div class="col">
+  <input type="text" class="txt" [(ngModel)]="title" name="title" placeholder="Title..">
+  <textarea class="txt" [(ngModel)]="content" name="content" placeholder="Content.."></textarea>
+  <input type="submit" class="btn" value="Add a Post" (click)="addPost()">
 
+</div>
 
+<div class="col">
+  <ul *ngFor="let post of posts | async">
+    <li (click)="getPost(post.id)">
+      <strong>{{ post.data.title}}</strong> (<a href="content" (click)="deletePost(post.id)">delete</a>)
+      <br>      
+      {{post.data.content}}
+    </li>
+  </ul>
+</div>
+  <h3>{{ (singlePost | async)?.title }}</h3>
+  <p>{{ (singlePost | async)?.content }}</p>
 
-<ul *ngFor="let post of posts | async">
-  <li (click)="getPost(post.id)">
-    <strong>{{ post.data.title}}</strong> (<a (click)="deletePost(post.id)">delete</a>)
-    <br>
-    {{post.data.content}}
-  </li>
-</ul>
+</div>
